@@ -72,4 +72,10 @@ namespace mpointer {
         id = rand();//en ves de este random va el id que devuelva el GC
     }
 
+    template<class T>
+    MPointer<T> operator *(MPointer<T> mp){
+        return mp;
+    }
+
+
 }
