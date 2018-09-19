@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <thread>
 
 using namespace std;
 
@@ -13,10 +14,10 @@ namespace mpointer {
  * de manera mas simple
  */
     template<class T>
-    class MPointer {
+    class MPointer{
     private:
-        int id = NULL;
-        T *dato = NULL;
+        int id = 0;
+        T *dato = 0;
     public:
 
         void New();
@@ -24,16 +25,8 @@ namespace mpointer {
         /*
          * Este es el destructor de la clase si funciona pero la cosa es que se llama solo y destruye la instancia
          * antes de lo esperado entoncs aqui queda para ver como se acopla o que con lo del MPointerGC
-         *
-        ~MPointer(){
-            cout<<"Entramos en el destructor de MPointer"<<endl;
-            if (dato != NULL){
-                cout<<"Efectivamente no era NULL y lo estamos liberando"<<endl;
-                free(dato);
-                dato = NULL;
-            }
-        }
          */
+        ~MPointer();
 
         //Sobrecarga del operador &
         T operator&() {
@@ -45,13 +38,16 @@ namespace mpointer {
             *dato = dat;
         }
 
-        //Sobrecarga del operador = para igualar dos instancias de MPointer
-        void operator=(MPointer mp) {
+        //Sobrecarga del operador = para igualar dos instancias de MPointer     dynamic_cast<const T*>(dat) != nullptr
+        void operator=(const MPointer mp) {
             this->dato = mp.dato;
         }
 
-        void mostrar();
+        T* operator!(){
+            return dato;
+        }
 
+        void mostrar();
     };
 
 /*
@@ -73,9 +69,177 @@ namespace mpointer {
     }
 
     template<class T>
-    MPointer<T> operator *(MPointer<T> mp){
+    MPointer<T> operator *(const MPointer<T> mp){
         return mp;
     }
 
+    //El destructor
+    template<class T>
+    MPointer<T>::~MPointer(){
+        /*
+        cout<<"Destruyendo el MPointer id: "<<id<<endl;
+
+        if (dato != NULL){
+            cout<<"Efectivamente no era NULL y lo estamos liberando"<<endl;
+            free(dato);
+            dato = NULL;
+        }
+        */
+
+    }
+
+
+
+
+    /*
+    class NodoGC{
+    private:
+        MPointer<int>* direccion;
+        int referencias = 0;
+    public:
+        NodoGC(MPointer<int> * dir){
+            direccion = dir;
+            referencias++;
+        }
+    };
+
+    class ListaGC{
+    private:
+        NodoGC head;
+    };
+
+    class MPointerGC{
+    private:
+        MPointerGC();
+        ListaGC listagc;
+
+    public:
+        static MPointerGC& getInstance();
+
+        MPointerGC& operator=(const MPointerGC&) = delete;
+
+    };
+
+     */
+
+
+
+
+
+
+//-------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+    /*
+     * Esta es la clase nodo la cual de la cual va a estar conformada la lista enlazada
+     */
+    class Nodo{
+    private:
+        MPointer<int> numero;
+        MPointer<Nodo> siguiente;
+        MPointer<Nodo> anterior;
+
+    public:
+        void ingresarDato(int num){
+            numero.New();
+            numero = num;
+            numero.mostrar();
+        }
+
+        int getNum(){
+            return &numero;
+        }
+
+        void enlazarSig(const MPointer<Nodo> &sig){
+            siguiente.New();
+            siguiente = sig;
+        }
+
+        MPointer<Nodo>& obtenerSig(){
+            return siguiente;
+        }
+    };
+
+
+    /*
+     * Esta clase nos brinda los metodos para manipular la lista enlazada
+     */
+    class Lista{
+    private:
+        MPointer<Nodo> head;
+        int size = 0;
+
+    public:
+        //Se ingresa un numero y el metodo se encarga de realizar la reserva de memoria y asignarlo a la lista
+        void add(int num){
+            if(size == 0){
+                cout<<"OK"<<endl;
+                head.New();
+                Nodo nodo;
+                nodo.ingresarDato(num);
+                head = nodo;
+                size++;
+            }else {
+                cout << "OK Nel" << endl;
+                MPointer<Nodo> nuevo;
+                nuevo.New();
+                Nodo nodo;
+                nodo.ingresarDato(num);
+                nodo.enlazarSig(head);
+                nuevo = nodo;
+                head = nuevo;
+                size++;
+            }
+        }
+
+        //Este metodo permite obtener el MPointer<Nodo> que se encuentra en la posicion
+        // del indice que ingresemos
+        MPointer<Nodo> get(int indice){
+            if(indice < size){
+                MPointer<Nodo> aux;
+                aux.New();
+                aux = head;
+                while(indice > 0){
+                    aux = (&aux).obtenerSig();
+                    indice--;
+                }
+                return aux;
+            }else{
+                cout<<"El indice solicitado no existe!";
+                MPointer<Nodo> aux;
+                aux.New();
+                Nodo nodo;
+                nodo.ingresarDato(0);
+                aux = nodo;
+                return aux;
+            }
+        }
+
+        void imprimirDatos(){
+            MPointer<Nodo> aux;
+            aux.New();
+            aux = head;
+            cout<<"{";
+            for(int i = 0; i<size;i++){
+                if(i<size-1) {
+                    cout << (&aux).getNum() << ",";
+                    aux = (&aux).obtenerSig();
+                }else{
+                    cout << (&aux).getNum();
+                    aux = (&aux).obtenerSig();
+                }
+            }
+            cout<<"}"<<endl;
+        }
+
+        //Retorna el prime nodo de la lista
+        MPointer<Nodo>& getHead(){
+            return head;
+        }
+
+    };
 
 }
