@@ -1,6 +1,8 @@
 #include <iostream>
 #include "MPointer.cpp"
 #include "Lista.h"
+#include "MPointerGC.h"
+#include "ListaSimple.h"
 //#include "InsertionSort.h"
 //#include "QuickSort.h"
 //#include "BubbleSort .h"
@@ -9,7 +11,7 @@ using namespace std;
 using namespace mpointer;
 
 int main() {
-
+/*
     int* intdir;
     int num = 48;
     char letra = 'f';
@@ -71,6 +73,30 @@ int main() {
     lista.get(4) = nodo;
     lista.imprimirDatos();
     cout<<"FIN Main"<<num<<endl;
+
+//prueba del Singleton
+    MPointerGC* gc1 = MPointerGC ::getInstance();
+    MPointerGC* gc2 = MPointerGC ::getInstance();
+
+    cout<<gc1<<endl;
+    cout<<gc2<<endl;*/
+//prueba de lista simple
+    SimpleList list = NULL;
+    add(list,8);
+    add(list,5);
+    add(list,9);
+    add(list,4);
+    add(list,3);
+    add(list,2);
+
+    print(list);
+    deleteSL(list,5);
+    search(list,9);
+    search(list,5);
+    print(list);
+
+
+
 
 
     return 0;

@@ -10,10 +10,20 @@
 Nodo.h
 /home/aykull/CLionProjects/Proyecto1/Nodo.h
 
+/home/aykull/CLionProjects/Proyecto1/ListaSimple.h
+iostream
+-
+stdlib.h
+-
+
 /home/aykull/CLionProjects/Proyecto1/MPointer.cpp
 iostream
 -
 thread
+-
+
+/home/aykull/CLionProjects/Proyecto1/MPointerGC.h
+iostream
 -
 
 /home/aykull/CLionProjects/Proyecto1/Nodo.h
@@ -25,4 +35,8 @@ MPointer.cpp
 /home/aykull/CLionProjects/Proyecto1/MPointer.cpp
 Lista.h
 /home/aykull/CLionProjects/Proyecto1/Lista.h
+MPointerGC.h
+/home/aykull/CLionProjects/Proyecto1/MPointerGC.h
+ListaSimple.h
+/home/aykull/CLionProjects/Proyecto1/ListaSimple.h
 

@@ -4,7 +4,9 @@
 CMakeFiles/Proyecto1.dir/MPointer.cpp.o: ../MPointer.cpp
 
 CMakeFiles/Proyecto1.dir/main.cpp.o: ../Lista.h
+CMakeFiles/Proyecto1.dir/main.cpp.o: ../ListaSimple.h
 CMakeFiles/Proyecto1.dir/main.cpp.o: ../MPointer.cpp
+CMakeFiles/Proyecto1.dir/main.cpp.o: ../MPointerGC.h
 CMakeFiles/Proyecto1.dir/main.cpp.o: ../Nodo.h
 CMakeFiles/Proyecto1.dir/main.cpp.o: ../main.cpp
 

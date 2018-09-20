@@ -93,7 +93,13 @@
 		<Unit filename="/home/aykull/CLionProjects/Proyecto1/Lista.h">
 			<Option target="Proyecto1"/>
 		</Unit>
+		<Unit filename="/home/aykull/CLionProjects/Proyecto1/ListaSimple.h">
+			<Option target="Proyecto1"/>
+		</Unit>
 		<Unit filename="/home/aykull/CLionProjects/Proyecto1/MPointer.cpp">
+			<Option target="Proyecto1"/>
+		</Unit>
+		<Unit filename="/home/aykull/CLionProjects/Proyecto1/MPointerGC.h">
 			<Option target="Proyecto1"/>
 		</Unit>
 		<Unit filename="/home/aykull/CLionProjects/Proyecto1/Nodo.h">
