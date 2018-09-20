@@ -1,12 +1,12 @@
 //
 // Created by aykull on 18/09/18.
 //
-
+/*
 #include <stdio.h>
 #include <math.h>
 
 using namespace mpointer;
-//apadtacion a la lista simple... con
+//apadtacion a la lista simple
 //falta que sea doble
 
 void insertionSort(Lista lista, int n) {
@@ -29,7 +29,7 @@ void insertionSort(Lista lista, int n) {
 
 
 
-/* Caso base u original del IS con array
+* Caso base u original del IS con array
  *
 void insertionSort(int arr[], int n)
 {
