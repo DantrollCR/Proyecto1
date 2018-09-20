@@ -1,33 +1,46 @@
 //
-// Created by aykull on 20/09/18.
+// Created by luisk on 15/09/18.
 //
 
 #include "Nodo.h"
-
+/*
+ * Esta clase nos brinda los metodos para manipular la lista enlazada
+ */
 class Lista{
 private:
-    MPointer<Nodo> head;
+
+    MPointer<Nodo> last;
     int size = 0;
 
 public:
+
+    int getSize(){
+        return size;
+    }
+
     //Se ingresa un numero y el metodo se encarga de realizar la reserva de memoria y asignarlo a la lista
     void add(int num){
         if(size == 0){
             cout<<"OK"<<endl;
-            head.New();
+            last.New();
             Nodo nodo;
             nodo.ingresarDato(num);
-            head = nodo;
+            nodo.enlazarSig(last);
+            nodo.enlazarAnt(last);
+            last = nodo;
             size++;
         }else {
             cout << "OK Nel" << endl;
-            MPointer<Nodo> nuevo;
-            nuevo.New();
-            Nodo nodo;
-            nodo.ingresarDato(num);
-            nodo.enlazarSig(head);
-            nuevo = nodo;
-            head = nuevo;
+            MPointer<Nodo> mpnuevo;
+            mpnuevo.New();
+            Nodo nodoNuevo;
+            nodoNuevo.ingresarDato(num);
+            nodoNuevo.enlazarAnt(last);
+            nodoNuevo.enlazarSig((&last).obtenerSig());
+            (!((!last)->obtenerSig()))->enlazarAnt(mpnuevo);
+            (!last)->enlazarSig(mpnuevo);
+            mpnuevo = nodoNuevo;
+            last = mpnuevo;
             size++;
         }
     }
@@ -38,7 +51,7 @@ public:
         if(indice < size){
             MPointer<Nodo> aux;
             aux.New();
-            aux = head;
+            aux = last;
             while(indice > 0){
                 aux = (&aux).obtenerSig();
                 indice--;
@@ -58,7 +71,7 @@ public:
     void imprimirDatos(){
         MPointer<Nodo> aux;
         aux.New();
-        aux = head;
+        aux = last;
         cout<<"{";
         for(int i = 0; i<size;i++){
             if(i<size-1) {
@@ -74,9 +87,7 @@ public:
 
     //Retorna el prime nodo de la lista
     MPointer<Nodo>& getHead(){
-        return head;
+        return last;
     }
 
 };
-
-
