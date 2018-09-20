@@ -1,9 +1,11 @@
 //
-// Created by aykull on 20/09/18.
+// Created by luisk on 15/09/18.
 //
 
 using namespace mpointer;
-
+/*
+    * Esta es la clase nodo la cual de la cual va a estar conformada la lista enlazada
+    */
 class Nodo{
 private:
     MPointer<int> numero;
@@ -28,5 +30,14 @@ public:
 
     MPointer<Nodo>& obtenerSig(){
         return siguiente;
+    }
+
+    void enlazarAnt(const MPointer<Nodo> &ant){
+        anterior.New();
+        anterior = ant;
+    }
+
+    MPointer<Nodo>& obtenerAnt(){
+        return anterior;
     }
 };
