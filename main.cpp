@@ -1,5 +1,9 @@
 #include <iostream>
 #include "MPointer.cpp"
+#include "Lista.h"
+//#include "InsertionSort.h"
+//#include "QuickSort.h"
+//#include "BubbleSort .h"
 
 using namespace std;
 using namespace mpointer;
@@ -59,7 +63,7 @@ int main() {
     lista.add(69);
     lista.add(999);
     lista.add(53);
-    lista.imprimirDatos();
+
     cout<<(&(lista.get(40))).getNum()<<endl;
     Nodo nodo;
     nodo.ingresarDato(-34);
@@ -68,6 +72,6 @@ int main() {
     lista.imprimirDatos();
     cout<<"FIN Main"<<num<<endl;
 
+
     return 0;
 }
-

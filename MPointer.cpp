@@ -1,7 +1,6 @@
 //
 // Created by luisk on 13/09/18.
 //
-
 #include <iostream>
 #include <thread>
 
@@ -78,7 +77,6 @@ namespace mpointer {
     MPointer<T>::~MPointer(){
         /*
         cout<<"Destruyendo el MPointer id: "<<id<<endl;
-
         if (dato != NULL){
             cout<<"Efectivamente no era NULL y lo estamos liberando"<<endl;
             free(dato);
@@ -102,26 +100,19 @@ namespace mpointer {
             referencias++;
         }
     };
-
     class ListaGC{
     private:
         NodoGC head;
     };
-
     class MPointerGC{
     private:
         MPointerGC();
         ListaGC listagc;
-
     public:
         static MPointerGC& getInstance();
-
         MPointerGC& operator=(const MPointerGC&) = delete;
-
     };
-
      */
-
 
 
 
@@ -135,7 +126,8 @@ namespace mpointer {
 
     /*
      * Esta es la clase nodo la cual de la cual va a estar conformada la lista enlazada
-     */
+     *
+     * paso la clase nodo a un archivo independiente
     class Nodo{
     private:
         MPointer<int> numero;
@@ -161,12 +153,12 @@ namespace mpointer {
         MPointer<Nodo>& obtenerSig(){
             return siguiente;
         }
-    };
+    };*/
 
 
     /*
      * Esta clase nos brinda los metodos para manipular la lista enlazada
-     */
+     *
     class Lista{
     private:
         MPointer<Nodo> head;
@@ -240,6 +232,7 @@ namespace mpointer {
             return head;
         }
 
-    };
+    };*/
 
 }
+

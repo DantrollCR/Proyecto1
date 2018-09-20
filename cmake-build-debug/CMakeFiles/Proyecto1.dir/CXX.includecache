@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/aykull/CLionProjects/Proyecto1/Lista.h
+Nodo.h
+/home/aykull/CLionProjects/Proyecto1/Nodo.h
+
+/home/aykull/CLionProjects/Proyecto1/MPointer.cpp
+iostream
+-
+thread
+-
+
+/home/aykull/CLionProjects/Proyecto1/Nodo.h
+
+/home/aykull/CLionProjects/Proyecto1/main.cpp
+iostream
+-
+MPointer.cpp
+/home/aykull/CLionProjects/Proyecto1/MPointer.cpp
+Lista.h
+/home/aykull/CLionProjects/Proyecto1/Lista.h
+
