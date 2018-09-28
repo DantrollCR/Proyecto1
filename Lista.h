@@ -21,7 +21,7 @@ public:
     //Se ingresa un numero y el metodo se encarga de realizar la reserva de memoria y asignarlo a la lista
     void add(int num){
         if(size == 0){
-            cout<<"OK"<<endl;
+            //cout<<"OK"<<endl;
             last.New();
             Nodo nodo;
             nodo.ingresarDato(num);
@@ -30,7 +30,7 @@ public:
             last = nodo;
             size++;
         }else {
-            cout << "OK Nel" << endl;
+            //cout << "OK Nel" << endl;
             MPointer<Nodo> mpnuevo;
             mpnuevo.New();
             Nodo nodoNuevo;
