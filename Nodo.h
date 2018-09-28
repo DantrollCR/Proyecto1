@@ -3,9 +3,10 @@
 //
 
 using namespace mpointer;
+
 /*
-    * Esta es la clase nodo la cual de la cual va a estar conformada la lista enlazada
-    */
+* Esta es la clase nodo la cual de la cual va a estar conformada la lista enlazada
+*/
 class Nodo{
 private:
     MPointer<int> numero;
