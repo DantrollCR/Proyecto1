@@ -1,22 +1,14 @@
 #include <iostream>
-#include "MPointer.cpp"
-#include "Lista.h"
 #include "MPointerGC.h"
-#include "ListaSimple.h"
-//#include "InsertionSort.h"
-//#include "QuickSort.h"
-//#include "BubbleSort .h"
+#include "MPointer.h"
+#include "Lista.h"
 
 using namespace std;
-using namespace mpointer;
 
 int main() {
+
 /*
-    int* intdir;
     int num = 48;
-    char letra = 'f';
-    char* chardir = &letra;
-    intdir = (int*)chardir;
 
     MPointer<int> mp;
     mp.New();
@@ -26,34 +18,44 @@ int main() {
     mp3.New();
     MPointer<int> mp4;
     mp4.New();
+    MPointer<char> mp5;
+    mp5.New();
+    MPointer<char> mp6;
+    mp6.New();
+    MPointer<char> mp7;
+    mp7.New();
+    MPointer<char> mp8;
 
     mp = 32;
     mp3 = 'z';
     mp2 = 't';
-    mp4 = 10;
+    mp4 = 69;
+
     mp.mostrar();
     mp2.mostrar();
     mp3.mostrar();
     mp4.mostrar();
+    mp8.mostrar();
     cout<<"El valor de num es:"<<num<<endl;
 
-    mp3 = mp2;
     mp = mp4;
+    mp3 = mp2;
+    mp5 = mp2;
+    mp6 = mp2;
+    mp7 = mp2;
+
 
     mp2.mostrar();
     mp3.mostrar();
+    mp7.mostrar();
 
-    *mp2 = 'k';
-    *mp4 = 900;
     num = &mp;
 
-    mp3.mostrar();
-    mp.mostrar();
-
     cout<<"El valor de num es:"<<num<<endl;
-    cout<<"El valor de intdir es:"<<intdir<<endl;
 
+*/
     cout<<"---------------------------------------------------------------------------------------------------"<<endl;
+
 
     Lista lista = Lista();
     lista.add(45);
@@ -65,39 +67,21 @@ int main() {
     lista.add(69);
     lista.add(999);
     lista.add(53);
-
-    cout<<(&(lista.get(40))).getNum()<<endl;
+    lista.imprimirDatos();
     Nodo nodo;
     nodo.ingresarDato(-34);
     nodo.enlazarSig((&(lista.get(4))).obtenerSig());
     lista.get(4) = nodo;
     lista.imprimirDatos();
-    cout<<"FIN Main"<<num<<endl;
-
-//prueba del Singleton
-    MPointerGC* gc1 = MPointerGC ::getInstance();
-    MPointerGC* gc2 = MPointerGC ::getInstance();
-
-    cout<<gc1<<endl;
-    cout<<gc2<<endl;*/
-//prueba de lista simple
-    SimpleList list = NULL;
-    add(list,8);
-    add(list,5);
-    add(list,9);
-    add(list,4);
-    add(list,3);
-    add(list,2);
-
-    print(list);
-    deleteSL(list,5);
-    search(list,9);
-    search(list,5);
-    print(list);
+    cout<<(&((&(lista.get(5))).obtenerAnt())).getNum()<<"este es!!"<<endl;
 
 
+    MPointerGC* gc1 = MPointerGC::getInstance();
+
+    gc1->imprimirGC();
 
 
-
+    cout<<"FIN Main"<<endl;
     return 0;
 }
+
