@@ -1,29 +1,39 @@
 //
-// Created by aykull on 20/09/18.
+// Created by luisk on 20/09/18.
 //
-#include <iostream>
+#include "ListaSimple.h"
+
+namespace gc {
+
+    class MPointerGC {
+    private:
+        MPointerGC()= default;
+        SimpleList list = NULL;
 
 
-class MPointerGC {
-private:
+    public:
 
-    static MPointerGC* instance;
-    MPointerGC();
+        static MPointerGC * getInstance(){
+            static MPointerGC * instancia = nullptr;
+            if(!instancia) instancia = new MPointerGC();
+            return instancia;
+        }
 
-public:
+        int setDirection(int * dir){
+            return add(list,dir);
+        }
 
-    static MPointerGC* getInstance();
-};
+        void imprimirGC(){
+            int i = 0;
+            mostrarLista(list,&i);
+        }
 
-MPointerGC* MPointerGC ::instance =0;
+        void deletDirection(int * dir){
+            deleteSL(list, dir);
+        }
 
-MPointerGC* MPointerGC::getInstance() {
-    if (instance == 0){
-        instance = new MPointerGC();
-    }
-    return instance;
+
+    };
+
+
 }
-
-MPointerGC::MPointerGC() {}
-
-
