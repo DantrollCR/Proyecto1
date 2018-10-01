@@ -49,6 +49,7 @@ public:
     // del indice que ingresemos
     MPointer<Nodo> get(int indice){
         if(indice < size){
+            indice++;
             MPointer<Nodo> aux;
             aux.New();
             aux = last;
@@ -58,12 +59,9 @@ public:
             }
             return aux;
         }else{
-            cout<<"El indice solicitado no existe!";
+            cout<<"El indice solicitado no existe!"<<endl;
             MPointer<Nodo> aux;
             aux.New();
-            Nodo nodo;
-            nodo.ingresarDato(0);
-            aux = nodo;
             return aux;
         }
     }
@@ -71,7 +69,7 @@ public:
     void imprimirDatos(){
         MPointer<Nodo> aux;
         aux.New();
-        aux = last;
+        aux = (&last).obtenerSig();
         cout<<"{";
         for(int i = 0; i<size;i++){
             if(i<size-1) {
@@ -83,6 +81,12 @@ public:
             }
         }
         cout<<"}"<<endl;
+    }
+
+    void insertar(Nodo nodo,int indice){
+        nodo.enlazarSig((&(this->get(indice))).obtenerSig());
+        nodo.enlazarAnt((&(this->get(indice))).obtenerAnt());
+        this->get(indice) = nodo;
     }
 
     //Retorna el prime nodo de la lista
