@@ -2,12 +2,12 @@
 // Created by aykull on 18/09/18.
 //
 #include <stdio.h>
-
+/* no se usa
 void swap(int *n1, int *n2){
     int aux = *n1;
     *n1 = *n2;
     *n2 = aux;
-}
+}*/
 
 void bubbleSort(Lista lista, int n){
     cout<<"Lista sin ordenar ";
